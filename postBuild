@@ -1,14 +1,7 @@
+#!/bin/bash
 set -ex
 
-invoke build --env-name=root --no-kernel
-invoke demofiles
-invoke talk -t demo
-rm -rf demofiles
-rm -rf notebooks
-rm -rf narrative
-rm -rf slides
-rm demo/notebooks/Julia.ipynb
-jupyter lab clean
+initdb -D mylocal_db
 
-# Setup a workspace
-jupyter lab workspaces import binder/workspace.json
+
+pg_ctl -D mylocal_db -l logfile start
