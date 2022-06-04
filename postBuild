@@ -1,7 +1,0 @@
-#!/bin/bash
-set -ex
-
-initdb -D mylocal_db
-
-
-pg_ctl -D mylocal_db -l logfile start
